@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack", "Restack\Restack.csproj", "{C6127E90-A352-4DB1-B432-957B59EC7A58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack", "src\Restack\Restack.csproj", "{C6127E90-A352-4DB1-B432-957B59EC7A58}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B3FEAA40-B11C-4D0D-8ED2-50A44D9E48D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Refit", "..\Restack.Refit\Restack.Refit.csproj", "{448B5874-C554-40D0-8FFB-82CA5783C0F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Refit", "src\Restack.Refit\Restack.Refit.csproj", "{448B5874-C554-40D0-8FFB-82CA5783C0F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Polly", "..\Restack.Polly\Restack.Polly.csproj", "{1E54CF36-F194-4282-B602-638568849D8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Polly", "src\Restack.Polly\Restack.Polly.csproj", "{1E54CF36-F194-4282-B602-638568849D8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Consul", "..\Restack.Consul\Restack.Consul.csproj", "{14FC2838-7D01-4DD7-A265-A1015FAC8134}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Consul", "src\Restack.Consul\Restack.Consul.csproj", "{14FC2838-7D01-4DD7-A265-A1015FAC8134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Mvc", "..\Restack.Mvc\Restack.Mvc.csproj", "{0570769F-225D-415F-B58B-E558C9D621E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Mvc", "src\Restack.Mvc\Restack.Mvc.csproj", "{0570769F-225D-415F-B58B-E558C9D621E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
