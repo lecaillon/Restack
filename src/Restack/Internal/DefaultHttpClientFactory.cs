@@ -23,7 +23,7 @@ namespace Restack.Internal
 
         public HttpMessageHandler ClientHandler { get; set; }
 
-        public override HttpClient GetClientByName(string name)
+        public override HttpClient GetClient(string name)
         {
             Check.NotNull(name, nameof(name));
 

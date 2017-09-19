@@ -8,9 +8,9 @@ namespace Restack
 
         public virtual HttpClient GetDefaultClient()
         {
-            return GetClientByName(DefaultName);
+            return GetClient(DefaultName);
         }
 
-        public abstract HttpClient GetClientByName(string name);
+        public abstract HttpClient GetClient(string name);
     }
 }

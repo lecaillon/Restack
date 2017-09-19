@@ -19,7 +19,7 @@ namespace Restack.Refit
             {
                 if (_client == null)
                 {
-                    _client = RestService.For<TClient>(_clientFactory.GetClientByName(typeof(TClient).Name));
+                    _client = RestService.For<TClient>(_clientFactory.GetClient(typeof(TClient).Name));
                 }
 
                 return _client;
