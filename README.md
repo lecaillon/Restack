@@ -45,7 +45,7 @@ Its implementation is based on:
         {
             var regions = await _geoApi.GetRegionsAsync();
 
-            return Ok(sessions);
+            return Ok(regions);
         }
     }
     ```
