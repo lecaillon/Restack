@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restack", "src\Restack\Restack.csproj", "{C6127E90-A352-4DB1-B432-957B59EC7A58}"
 EndProject
@@ -17,9 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restack.Mvc", "src\Restack.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8E7BD656-D4F1-4DC9-ACF5-E71AB6A1C909}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Tests", "test\Restack.Tests\Restack.Tests.csproj", "{3ED1937B-36B0-41AC-A3A4-E925403ED890}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restack.Tests", "test\Restack.Tests\Restack.Tests.csproj", "{3ED1937B-36B0-41AC-A3A4-E925403ED890}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.Refit.Tests", "test\Restack.Refit.Tests\Restack.Refit.Tests.csproj", "{F44B8842-B4CD-4F2A-87B1-770B9AC23464}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restack.Refit.Tests", "test\Restack.Refit.Tests\Restack.Refit.Tests.csproj", "{F44B8842-B4CD-4F2A-87B1-770B9AC23464}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{802994B0-F814-4F51-9DBF-9C59A30BD311}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restack.WebApp", "sample\Restack.WebApp\Restack.WebApp.csproj", "{219E162A-8433-4860-9124-0A02CEB3306C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{F44B8842-B4CD-4F2A-87B1-770B9AC23464}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F44B8842-B4CD-4F2A-87B1-770B9AC23464}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F44B8842-B4CD-4F2A-87B1-770B9AC23464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{219E162A-8433-4860-9124-0A02CEB3306C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{219E162A-8433-4860-9124-0A02CEB3306C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{219E162A-8433-4860-9124-0A02CEB3306C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{219E162A-8433-4860-9124-0A02CEB3306C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +75,7 @@ Global
 		{0570769F-225D-415F-B58B-E558C9D621E1} = {B3FEAA40-B11C-4D0D-8ED2-50A44D9E48D2}
 		{3ED1937B-36B0-41AC-A3A4-E925403ED890} = {8E7BD656-D4F1-4DC9-ACF5-E71AB6A1C909}
 		{F44B8842-B4CD-4F2A-87B1-770B9AC23464} = {8E7BD656-D4F1-4DC9-ACF5-E71AB6A1C909}
+		{219E162A-8433-4860-9124-0A02CEB3306C} = {802994B0-F814-4F51-9DBF-9C59A30BD311}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53164345-8049-4990-9677-1F00D99B1357}
