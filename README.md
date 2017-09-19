@@ -16,14 +16,17 @@ Its implementation is based on:
         Task<IEnumerable<Region>> GetRegionsAsync();
     }
     ````
-1. Configure the URL for your service.
+1. Configure the URL for your service and add some http request headers.
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddMvc();
-        services.AddRestack();
+        services.AddRestack(); // configure Restack HttpClientFactory
 
-        services.AddRestClient<IGeoApi>("https://geo.api.gouv.fr");
+        services.AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"));
+
+        services.AddRestClient<IGeoApi>("https://geo.api.gouv.fr")
+                .AddRestackHeaders<IGeoApi>(o => o.Headers.Add("api-key", "xxxxx-xxx-xxxxxxxx"));
     }
     ```
 1. Consume the interface via RestClient\<T\>.
