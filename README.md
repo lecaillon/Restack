@@ -6,7 +6,7 @@ Its implementation is based on:
 - [Polly](https://github.com/App-vNext/Polly)
 - [consul](https://github.com/hashicorp/consul)
 
-### Example
+### Example of the refit support
 
 1. Define an interface for your rest service.
     ````csharp
@@ -46,6 +46,31 @@ Its implementation is based on:
             var regions = await _geoApi.GetRegionsAsync();
 
             return Ok(regions);
+        }
+    }
+    ```
+
+### Example of the ASP.NET MVC HttpClient param binding support
+
+1. Configure the URL for your service and add some http request headers.
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddMvc().AddRestackMvc(); // configure Restack MVC
+        services.AddRestack(); // configure Restack HttpClientFactory
+
+        services.AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"));
+        services.AddRestackHeaders("github", o => o.Headers.Add("Accept", "application/vnd.github.v3+json"));
+    }
+    ```
+1. Consume the HttpClient.
+    ```csharp
+    public class HomeController : Controller
+    {
+        public async Task<IActionResult> Index([HttpClientName("github")]HttpClient client)
+        {
+            var response = await client.GetAsync("https://api.github.com/users/lecaillon");
+            ...
         }
     }
     ```
