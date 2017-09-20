@@ -52,7 +52,7 @@ Its implementation is based on:
 
 ### Example of the ASP.NET MVC HttpClient param binding support
 
-1. Configure the URL for your service and add some http request headers.
+1. Configure some http request headers for the "github" named http client".
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
