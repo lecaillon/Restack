@@ -21,7 +21,7 @@ namespace Restack.WebApp.Controllers
 
         public async Task<IActionResult> Index([HttpClientName("github")]HttpClient client)
         {
-            var response = await client.GetAsync("https://google.com");
+            var response = await client.GetAsync("https://github.com");
             return View();
         }
 
