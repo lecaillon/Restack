@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Restack.Mvc\Restack.Mvc.csproj" />
     <ProjectReference Include="..\..\src\Restack.Refit\Restack.Refit.csproj" />
     <ProjectReference Include="..\..\src\Restack\Restack.csproj" />
   </ItemGroup>

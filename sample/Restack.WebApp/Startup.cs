@@ -17,13 +17,15 @@ namespace Restack.WebApp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddRestackMvc();
             services.AddRestack();
 
             services.AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"));
 
             services.AddRestClient<IGeoApi>("https://geo.api.gouv.fr")
                     .AddRestackHeaders<IGeoApi>(o => o.Headers.Add("api-key", "xxxxx-xxx-xxxxxxxx"));
+
+            services.AddRestackHeaders("github", o => o.Headers.Add("Accept", "application/vnd.github.v3+json"));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

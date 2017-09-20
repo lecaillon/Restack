@@ -1,7 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Restack.Mvc;
 using Restack.Refit;
 using Restack.WebApp.Models;
 using Restack.WebApp.Services;
@@ -17,8 +19,9 @@ namespace Restack.WebApp.Controllers
             _geoApi = geoApiClient.Client;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index([HttpClientName("github")]HttpClient client)
         {
+            var response = await client.GetAsync("https://google.com");
             return View();
         }
 
