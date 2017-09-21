@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Polly" Version="5.3.1" />
     <PackageReference Include="Refit" Version="4.0.1" />
   </ItemGroup>
 
@@ -15,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Restack.Mvc\Restack.Mvc.csproj" />
+    <ProjectReference Include="..\..\src\Restack.Polly\Restack.Polly.csproj" />
     <ProjectReference Include="..\..\src\Restack.Refit\Restack.Refit.csproj" />
     <ProjectReference Include="..\..\src\Restack\Restack.csproj" />
   </ItemGroup>
