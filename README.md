@@ -60,7 +60,9 @@ Its implementation is based on:
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddMvc().AddRestackMvc(); // configure Restack MVC
+        services.AddMvc()
+                .AddRestackMvc(); // configure Restack MVC
+        
         services.AddRestack(); // configure Restack HttpClientFactory
 
         services.AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"));
