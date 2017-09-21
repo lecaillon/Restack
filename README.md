@@ -6,7 +6,7 @@ Its implementation is based on:
 - [Polly](https://github.com/App-vNext/Polly)
 - [consul](https://github.com/hashicorp/consul)
 
-### Example of the refit support
+### Example of the refit / Polly support
 
 1. Define an interface for your rest service.
     ````csharp
@@ -16,17 +16,21 @@ Its implementation is based on:
         Task<IEnumerable<Region>> GetRegionsAsync();
     }
     ````
-1. Configure the URL for your service and add some http request headers.
+1. Configure the URL for your service and add some http request headers and policies.
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddMvc();
-        services.AddRestack(); // configure Restack HttpClientFactory
+        
+        services.AddRestack() // configure Restack HttpClientFactory
+                .AddPolly();  // configure Polly
 
         services.AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"));
 
         services.AddRestClient<IGeoApi>("https://geo.api.gouv.fr")
-                .AddRestackHeaders<IGeoApi>(o => o.Headers.Add("api-key", "xxxxx-xxx-xxxxxxxx"));
+                .AddRestackHeaders<IGeoApi>(o => o.Headers.Add("api-key", "xxxxx-xxx-xxxxxxxx"))
+                .AddRestackPolicy<IGeoApi>(b => b.RetryAsync())
+                .AddRestackPolicy<IGeoApi>(b => b.CircuitBreakerAsync(1, TimeSpan.FromSeconds(5)));
     }
     ```
 1. Consume the interface via RestClient\<T\>.
