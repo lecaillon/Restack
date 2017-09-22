@@ -1,10 +1,11 @@
 using System.Linq;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using Restack.Refit.Tests.Services;
+using Restack.Refit;
+using Restack.Tests.Services;
 using Xunit;
 
-namespace Restack.Refit.Tests
+namespace Restack.Tests
 {
     public class RefitTest
     {
@@ -47,9 +48,5 @@ namespace Restack.Refit.Tests
         private IServiceCollection InitIGeoApi() => new ServiceCollection().AddOptions()
                                                                            .AddRestack()
                                                                            .AddRestClient<IGeoApi>("https://geo.api.gouv.fr");
-
-        private IServiceCollection InitIGeoApiWithPolly() => new ServiceCollection().AddOptions()
-                                                                   .AddRestack()
-                                                                   .AddRestClient<IGeoApi>("https://geo.api.gouv.fr");
     }
 }
