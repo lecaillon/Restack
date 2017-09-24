@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using System.Net.Http;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using Polly;
 using Xunit;
 
 namespace Restack.Tests
@@ -23,22 +26,37 @@ namespace Restack.Tests
             httpClient.Should().NotBeNull();
         }
 
-        [Fact(DisplayName = "Multi_header_values_work")]
-        public async void Multi_header_values_work()
+        [Theory(DisplayName = "HttpClientFactory_with_multi_header_values_work")]
+        [MemberData(nameof(InitHttpClientFactory))]
+        public async void HttpClientFactory_with_multi_header_values_work(HttpClientFactory clientFactory)
         {
-            // Arrange
-            var serviceProvider = new ServiceCollection().AddOptions()
-                                                         .AddRestack()
-                                                         .AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"))
-                                                         .BuildServiceProvider();
-
-            var clientFactory = serviceProvider.GetRequiredService<HttpClientFactory>();
-
             // Act
             var response = await clientFactory.GetDefaultClient().GetAsync("https://google.com/");
 
             // Assert
             response.RequestMessage.Headers.UserAgent.ToString().Should().Be("myagent");
+        }
+
+        private static IEnumerable<HttpClientFactory[]> InitHttpClientFactory()
+        {
+            yield return new HttpClientFactory[]
+            {
+                new ServiceCollection().AddOptions()
+                                       .AddRestack()
+                                       .AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"))
+                                       .BuildServiceProvider()
+                                       .GetRequiredService<HttpClientFactory>()
+            };
+
+            yield return new HttpClientFactory[]
+            {
+                new ServiceCollection().AddOptions()
+                                       .AddRestack().AddPolly()
+                                       .AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"))
+                                       .AddRestackGlobalPolicy(b => Policy.TimeoutAsync<HttpResponseMessage>(3))
+                                       .BuildServiceProvider()
+                                       .GetRequiredService<HttpClientFactory>()
+            };
         }
     }
 }
