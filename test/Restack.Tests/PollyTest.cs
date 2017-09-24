@@ -19,14 +19,13 @@ namespace Restack.Tests
         {
             // Arrange
             int nbTry = 0;
-            var geoApi = new ServiceCollection().AddOptions()
-                                                .AddRestack().AddPolly()
-                                                .AddRestClient<IGeoApi>("https://bad.url.geo.api.gouv.fr")
-                                                .AddRestackGlobalPolicy(b => Policy.TimeoutAsync<HttpResponseMessage>(3)) // Polly
-                                                .AddRestackPolicy<IGeoApi>(b => b.RetryForeverAsync((res, ctx) => nbTry++)) // Polly
-                                                .BuildServiceProvider()
-                                                .GetRequiredService<IRestClient<IGeoApi>>()
-                                                .Client;
+            var geoApi = TestUtil.ServiceCollection.AddPolly()
+                                                   .AddRestClient<IGeoApi>("https://bad.url.geo.api.gouv.fr")
+                                                   .AddRestackGlobalPolicy(b => Policy.TimeoutAsync<HttpResponseMessage>(3)) // Polly
+                                                   .AddRestackPolicy<IGeoApi>(b => b.RetryForeverAsync((res, ctx) => nbTry++)) // Polly
+                                                   .BuildServiceProvider()
+                                                   .GetRequiredService<IRestClient<IGeoApi>>()
+                                                   .Client;
 
             // Acts
             Func<Task<IEnumerable<Region>>> func = async () => await geoApi.GetRegionsAsync();

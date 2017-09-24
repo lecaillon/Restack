@@ -15,9 +15,8 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddSingleton<HttpClientFactory, DefaultHttpClientFactory>();
             services.TryAddEnumerable(ServiceDescriptor.Singleton<IHttpClientFactoryPolicy, OptionsHttpClientFactoryPolicy>());
             services.TryAddEnumerable(ServiceDescriptor.Singleton<IHttpClientFactoryPolicy, HeaderHttpClientFactoryPolicy>());
-            
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<IHttpClientFactoryPolicy, LoggingHttpClientFactoryPolicy>());
             //services.TryAddEnumerable(ServiceDescriptor.Singleton<IHttpClientFactoryPolicy, LoggingScopeHttpClientFactoryPolicy>());
-            //services.TryAddEnumerable(ServiceDescriptor.Singleton<IHttpClientFactoryPolicy, MessageLoggingHttpClientFactoryPolicy>());
 
             return services;
         }

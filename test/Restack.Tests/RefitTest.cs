@@ -42,24 +42,21 @@ namespace Restack.Tests
         {
             yield return new IGeoApi[] 
             {
-                new ServiceCollection().AddOptions()
-                                       .AddRestack()
-                                       .AddRestClient<IGeoApi>("https://geo.api.gouv.fr") // refit
-                                       .BuildServiceProvider()
-                                       .GetRequiredService<IRestClient<IGeoApi>>()
-                                       .Client
+                TestUtil.ServiceCollection.AddRestClient<IGeoApi>("https://geo.api.gouv.fr") // refit
+                                          .BuildServiceProvider()
+                                          .GetRequiredService<IRestClient<IGeoApi>>()
+                                          .Client
         };
 
             yield return new IGeoApi[]
             {
-                new ServiceCollection().AddOptions()
-                                       .AddRestack().AddPolly()
-                                       .AddRestClient<IGeoApi>("https://geo.api.gouv.fr") // refit
-                                       .AddRestackPolicy<IGeoApi>(b => b.RetryAsync()) // Polly
-                                       .AddRestackPolicy<IGeoApi>(b => b.CircuitBreakerAsync(1, TimeSpan.FromSeconds(5))) // Polly
-                                       .BuildServiceProvider()
-                                       .GetRequiredService<IRestClient<IGeoApi>>()
-                                       .Client
+                TestUtil.ServiceCollection.AddPolly()
+                                          .AddRestClient<IGeoApi>("https://geo.api.gouv.fr") // refit
+                                          .AddRestackPolicy<IGeoApi>(b => b.RetryAsync()) // Polly
+                                          .AddRestackPolicy<IGeoApi>(b => b.CircuitBreakerAsync(1, TimeSpan.FromSeconds(5))) // Polly
+                                          .BuildServiceProvider()
+                                          .GetRequiredService<IRestClient<IGeoApi>>()
+                                          .Client
             };
         }
 
@@ -67,30 +64,27 @@ namespace Restack.Tests
         {
             yield return new IGeoApi[]
             {
-                new ServiceCollection().AddOptions()
-                                       .AddRestack()
-                                       .AddRestClient<IGeoApi>("https://geo.api.gouv.fr") // refit
-                                       .AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent")) // header
-                                       .AddRestackHeaders<IGeoApi>(o => o.Headers.Add("key1", "value1")) // header
-                                       .AddRestackHeaders("IGeoApi", o => o.Headers.Add("api-key", "xxxxx")) // header
-                                       .BuildServiceProvider()
-                                       .GetRequiredService<IRestClient<IGeoApi>>()
-                                       .Client
+                TestUtil.ServiceCollection.AddRestClient<IGeoApi>("https://geo.api.gouv.fr") // refit
+                                          .AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent")) // header
+                                          .AddRestackHeaders<IGeoApi>(o => o.Headers.Add("key1", "value1")) // header
+                                          .AddRestackHeaders("IGeoApi", o => o.Headers.Add("api-key", "xxxxx")) // header
+                                          .BuildServiceProvider()
+                                          .GetRequiredService<IRestClient<IGeoApi>>()
+                                          .Client
             };
 
             yield return new IGeoApi[]
             {
-                new ServiceCollection().AddOptions()
-                                       .AddRestack().AddPolly()
-                                       .AddRestClient<IGeoApi>("https://geo.api.gouv.fr") // refit
-                                       .AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent")) // header
-                                       .AddRestackHeaders<IGeoApi>(o => o.Headers.Add("key1", "value1")) // header
-                                       .AddRestackHeaders("IGeoApi", o => o.Headers.Add("api-key", "xxxxx")) // header
-                                       .AddRestackPolicy<IGeoApi>(b => b.RetryAsync()) // Polly
-                                       .AddRestackPolicy<IGeoApi>(b => b.CircuitBreakerAsync(1, TimeSpan.FromSeconds(5))) // Polly
-                                       .BuildServiceProvider()
-                                       .GetRequiredService<IRestClient<IGeoApi>>()
-                                       .Client
+                TestUtil.ServiceCollection.AddPolly()
+                                          .AddRestClient<IGeoApi>("https://geo.api.gouv.fr") // refit
+                                          .AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent")) // header
+                                          .AddRestackHeaders<IGeoApi>(o => o.Headers.Add("key1", "value1")) // header
+                                          .AddRestackHeaders("IGeoApi", o => o.Headers.Add("api-key", "xxxxx")) // header
+                                          .AddRestackPolicy<IGeoApi>(b => b.RetryAsync()) // Polly
+                                          .AddRestackPolicy<IGeoApi>(b => b.CircuitBreakerAsync(1, TimeSpan.FromSeconds(5))) // Polly
+                                          .BuildServiceProvider()
+                                          .GetRequiredService<IRestClient<IGeoApi>>()
+                                          .Client
             };
         }
     }
