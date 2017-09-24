@@ -1,4 +1,4 @@
-﻿namespace Restack
+﻿namespace Restack.Http
 {
     public interface IHttpClientFactoryPolicy
     {

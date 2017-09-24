@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Preconditions;
+using Restack.Http;
 
 namespace Restack.Polly
 {

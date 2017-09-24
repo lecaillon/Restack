@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace Restack
+namespace Restack.Http
 {
     public abstract class HttpClientFactoryContext
     {

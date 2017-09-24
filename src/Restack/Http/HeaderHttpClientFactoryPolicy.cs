@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Preconditions;
 
-namespace Restack.Internal
+namespace Restack.Http
 {
     internal class HeaderHttpClientFactoryPolicy : IHttpClientFactoryPolicy
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Preconditions;
 
-namespace Restack.Internal
+namespace Restack.Http
 {
     internal class OptionsHttpClientFactoryPolicy : IHttpClientFactoryPolicy
     {

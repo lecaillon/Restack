@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using Preconditions;
 
-namespace Restack.Internal
+namespace Restack.Http
 {
     internal class DefaultHttpClientFactory : HttpClientFactory
     {

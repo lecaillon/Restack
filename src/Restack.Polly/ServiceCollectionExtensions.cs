@@ -3,7 +3,7 @@ using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Polly;
 using Preconditions;
-using Restack;
+using Restack.Http;
 using Restack.Polly;
 
 namespace Microsoft.Extensions.DependencyInjection

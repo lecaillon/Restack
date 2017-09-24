@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Preconditions;
 using Restack;
-using Restack.Internal;
+using Restack.Http;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

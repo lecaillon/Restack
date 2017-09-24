@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Polly;
@@ -28,11 +29,11 @@ namespace Restack.Tests
                                                 .Client;
 
             // Acts
-            Func<IEnumerable<Region>> func = () => geoApi.GetRegionsAsync().Result;
+            Func<Task<IEnumerable<Region>>> func = async () => await geoApi.GetRegionsAsync();
 
             // Assert
-            func.Enumerating().ShouldThrowExactly<AggregateException>()
-                              .WithInnerExceptionExactly<TimeoutRejectedException>();
+            func.ShouldThrowExactly<AggregateException>()
+                .WithInnerExceptionExactly<TimeoutRejectedException>();
 
             nbTry.Should().BeGreaterThan(0);
         }

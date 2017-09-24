@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using Preconditions;
 
-namespace Restack
+namespace Restack.Http
 {
     public abstract class MessageHandlerHttpClientFactoryPolicy : IHttpClientFactoryPolicy
     {
