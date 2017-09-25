@@ -12,12 +12,20 @@ namespace Polly
         {
             if (_cached == null)
             {
-                int nbItems = Items?.Count ?? 0;
-                if(nbItems > 0)
+                switch (Items.Count)
                 {
-                    _cached = nbItems > 1
-                        ? Policy.WrapAsync(Items.ToArray())
-                        : Items[0];
+                    case 0:
+                        // do nothing
+                        _cached = Policy.NoOpAsync<HttpResponseMessage>();
+                        break;
+
+                    case 1:
+                        _cached = Items[0];
+                        break;
+
+                    default:
+                        _cached = Policy.WrapAsync(Items.ToArray());
+                        break;
                 }
             }
 
