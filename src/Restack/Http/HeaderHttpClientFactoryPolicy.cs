@@ -40,11 +40,14 @@ namespace Restack.Http
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
                 var options = GetOptions(request);
-                foreach (var kvp in options.Headers)
+                if (options != null)
                 {
-                    if (!request.Headers.TryAddWithoutValidation(kvp.Key, (IEnumerable<string>)kvp.Value))
+                    foreach (var kvp in options.Headers)
                     {
-                        request.Content?.Headers.TryAddWithoutValidation(kvp.Key, (IEnumerable<string>)kvp.Value);
+                        if (!request.Headers.TryAddWithoutValidation(kvp.Key, (IEnumerable<string>)kvp.Value))
+                        {
+                            request.Content?.Headers.TryAddWithoutValidation(kvp.Key, (IEnumerable<string>)kvp.Value);
+                        }
                     }
                 }
 

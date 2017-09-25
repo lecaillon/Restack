@@ -39,7 +39,7 @@ namespace Restack.Polly
             protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
                 var options = GetOptions(request);
-                if (options.Policies.Count == 0)
+                if (options == null || options.Policies.Count == 0)
                 {
                     return await base.SendAsync(request, cancellationToken);
                 }
