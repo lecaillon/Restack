@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 using Preconditions;
 using Restack.Mvc;
 
@@ -7,7 +6,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class MvcBuilderExtensions
     {
-        public static IMvcCoreBuilder AddRestackMvcCore(this IMvcCoreBuilder builder)
+        public static IMvcCoreBuilder AddRestackModelBinder(this IMvcCoreBuilder builder)
         {
             Check.NotNull(builder, nameof(builder));
 
@@ -19,7 +18,7 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        public static IMvcBuilder AddRestackMvc(this IMvcBuilder builder)
+        public static IMvcBuilder AddRestackModelBinder(this IMvcBuilder builder)
         {
             Check.NotNull(builder, nameof(builder));
 

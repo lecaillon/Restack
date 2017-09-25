@@ -20,7 +20,7 @@ namespace Restack.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc()
-                    .AddRestackMvc();
+                    .AddRestackModelBinder();
 
             services.AddRestack()
                     .AddPolly();
