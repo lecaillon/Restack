@@ -61,7 +61,7 @@ Its implementation is based on:
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddMvc()
-                .AddRestackMvc(); // configure Restack MVC
+                .AddRestackModelBinder(); // configure Restack MVC
         
         services.AddRestack(); // configure Restack HttpClientFactory
 
