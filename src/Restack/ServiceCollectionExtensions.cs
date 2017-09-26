@@ -48,5 +48,15 @@ namespace Microsoft.Extensions.DependencyInjection
             services.Configure<HeaderOptions>(typeof(TClient).Name, action);
             return services;
         }
+
+        public static IServiceCollection AddRestackNamedClient(this IServiceCollection services, string name, Action<HttpClientOptions> action)
+        {
+            Check.NotNull(services, nameof(services));
+            Check.NotNull(name, nameof(name));
+            Check.NotNull(action, nameof(action));
+
+            services.Configure<HttpClientOptions>(name, action);
+            return services;
+        }
     }
 }
