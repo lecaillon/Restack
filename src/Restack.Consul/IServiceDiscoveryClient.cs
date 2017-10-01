@@ -6,8 +6,8 @@ namespace Restack.Consul
 {
     public interface IServiceDiscoveryClient
     {
-        Task<Uri> GetUriAsync(string serviceName);
+        Task<Uri> GetUriAsync(Uri service);
 
-        Task<Uri> GetUriAsync(string serviceName, CancellationToken token);
+        Task<Uri> GetUriAsync(Uri service, CancellationToken token);
     }
 }

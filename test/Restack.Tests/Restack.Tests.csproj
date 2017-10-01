@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Restack.Consul\Restack.Consul.csproj" />
     <ProjectReference Include="..\..\src\Restack.Polly\Restack.Polly.csproj" />
     <ProjectReference Include="..\..\src\Restack.Refit\Restack.Refit.csproj" />
     <ProjectReference Include="..\..\src\Restack\Restack.csproj" />
