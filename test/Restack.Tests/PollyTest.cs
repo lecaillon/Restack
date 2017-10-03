@@ -19,8 +19,7 @@ namespace Restack.Tests
         {
             // Arrange
             int nbTry = 0;
-            var geoApi = TestUtil.ServiceCollection.AddPolly()
-                                                   .AddRestClient<IGeoApi>("https://bad.url.geo.api.gouv.fr")
+            var geoApi = TestUtil.ServiceCollection.AddRestClient<IGeoApi>("https://bad.url.geo.api.gouv.fr")
                                                    .AddRestackGlobalPolicy(b => Policy.TimeoutAsync<HttpResponseMessage>(3)) // Polly
                                                    .AddRestackPolicy<IGeoApi>(b => b.RetryForeverAsync((res, ctx) => nbTry++)) // Polly
                                                    .BuildServiceProvider()

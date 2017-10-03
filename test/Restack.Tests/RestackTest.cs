@@ -69,8 +69,7 @@ namespace Restack.Tests
 
             yield return new HttpClientFactory[]
             {
-                TestUtil.ServiceCollection.AddPolly()
-                                          .AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"))
+                TestUtil.ServiceCollection.AddRestackGlobalHeaders(o => o.Headers.Add("user-agent", "myagent"))
                                           .AddRestackGlobalPolicy(b => Policy.TimeoutAsync<HttpResponseMessage>(3))
                                           .BuildServiceProvider()
                                           .GetRequiredService<HttpClientFactory>()

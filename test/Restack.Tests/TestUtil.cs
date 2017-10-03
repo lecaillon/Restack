@@ -6,6 +6,8 @@ namespace Restack.Tests
     {
         public static IServiceCollection ServiceCollection => new ServiceCollection().AddLogging()
                                                                                      .AddOptions()
-                                                                                     .AddRestack();
+                                                                                     .AddRestack()
+                                                                                     .AddConsul()
+                                                                                     .AddPolly();
     }
 }
