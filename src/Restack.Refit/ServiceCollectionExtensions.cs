@@ -13,10 +13,10 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddRestClient<TClient>(this IServiceCollection services, Action<HttpClientOptions> action)
+        public static IServiceCollection AddRestClient<TClient>(this IServiceCollection services, Action<HttpClientOptions> setupAction)
         {
             services.AddRestClient();
-            services.Configure(typeof(TClient).Name, action);
+            services.Configure(typeof(TClient).Name, setupAction);
             return services;
         }
 

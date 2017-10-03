@@ -19,34 +19,34 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddRestackGlobalPolicy(this IServiceCollection services, Func<PolicyBuilder<HttpResponseMessage>, Policy<HttpResponseMessage>> action)
+        public static IServiceCollection AddRestackGlobalPolicy(this IServiceCollection services, Func<PolicyBuilder<HttpResponseMessage>, Policy<HttpResponseMessage>> setupAction)
         {
             Check.NotNull(services, nameof(services));
-            Check.NotNull(action, nameof(action));
+            Check.NotNull(setupAction, nameof(setupAction));
 
             var builder = Policy<HttpResponseMessage>.Handle<HttpRequestException>().OrResult(m => !m.IsSuccessStatusCode);
-            services.ConfigureAll<PollyOptions>(options => options.Policies.Add(action(builder)));
+            services.ConfigureAll<PollyOptions>(options => options.Policies.Add(setupAction(builder)));
 
             return services;
         }
 
-        public static IServiceCollection AddRestackPolicy(this IServiceCollection services, string name, Func<PolicyBuilder<HttpResponseMessage>, Policy<HttpResponseMessage>> action)
+        public static IServiceCollection AddRestackPolicy(this IServiceCollection services, string name, Func<PolicyBuilder<HttpResponseMessage>, Policy<HttpResponseMessage>> setupAction)
         {
             Check.NotNull(services, nameof(services));
             Check.NotNull(name, nameof(name));
-            Check.NotNull(action, nameof(action));
+            Check.NotNull(setupAction, nameof(setupAction));
 
             var builder = Policy<HttpResponseMessage>.Handle<HttpRequestException>().OrResult(m => !m.IsSuccessStatusCode);
-            services.Configure<PollyOptions>(name, options => options.Policies.Add(action(builder)));
+            services.Configure<PollyOptions>(name, options => options.Policies.Add(setupAction(builder)));
             return services;
         }
 
-        public static IServiceCollection AddRestackPolicy<TClient>(this IServiceCollection services, Func<PolicyBuilder<HttpResponseMessage>, Policy<HttpResponseMessage>> action)
+        public static IServiceCollection AddRestackPolicy<TClient>(this IServiceCollection services, Func<PolicyBuilder<HttpResponseMessage>, Policy<HttpResponseMessage>> setupAction)
         {
             Check.NotNull(services, nameof(services));
-            Check.NotNull(action, nameof(action));
+            Check.NotNull(setupAction, nameof(setupAction));
 
-            return AddRestackPolicy(services, typeof(TClient).Name, action);
+            return AddRestackPolicy(services, typeof(TClient).Name, setupAction);
         }
     }
 }

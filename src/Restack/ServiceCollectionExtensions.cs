@@ -21,41 +21,41 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddRestackGlobalHeaders(this IServiceCollection services, Action<HeaderOptions> action)
+        public static IServiceCollection AddRestackGlobalHeaders(this IServiceCollection services, Action<HeaderOptions> setupAction)
         {
             Check.NotNull(services, nameof(services));
-            Check.NotNull(action, nameof(action));
+            Check.NotNull(setupAction, nameof(setupAction));
 
-            services.ConfigureAll<HeaderOptions>(action);
+            services.ConfigureAll<HeaderOptions>(setupAction);
             return services;
         }
 
-        public static IServiceCollection AddRestackHeaders(this IServiceCollection services, string name, Action<HeaderOptions> action)
+        public static IServiceCollection AddRestackHeaders(this IServiceCollection services, string name, Action<HeaderOptions> setupAction)
         {
             Check.NotNull(services, nameof(services));
             Check.NotNull(name, nameof(name));
-            Check.NotNull(action, nameof(action));
+            Check.NotNull(setupAction, nameof(setupAction));
 
-            services.Configure<HeaderOptions>(name, action);
+            services.Configure<HeaderOptions>(name, setupAction);
             return services;
         }
 
-        public static IServiceCollection AddRestackHeaders<TClient>(this IServiceCollection services, Action<HeaderOptions> action)
+        public static IServiceCollection AddRestackHeaders<TClient>(this IServiceCollection services, Action<HeaderOptions> setupAction)
         {
             Check.NotNull(services, nameof(services));
-            Check.NotNull(action, nameof(action));
+            Check.NotNull(setupAction, nameof(setupAction));
 
-            services.Configure<HeaderOptions>(typeof(TClient).Name, action);
+            services.Configure<HeaderOptions>(typeof(TClient).Name, setupAction);
             return services;
         }
 
-        public static IServiceCollection AddRestackNamedClient(this IServiceCollection services, string name, Action<HttpClientOptions> action)
+        public static IServiceCollection AddRestackNamedClient(this IServiceCollection services, string name, Action<HttpClientOptions> setupAction)
         {
             Check.NotNull(services, nameof(services));
             Check.NotNull(name, nameof(name));
-            Check.NotNull(action, nameof(action));
+            Check.NotNull(setupAction, nameof(setupAction));
 
-            services.Configure<HttpClientOptions>(name, action);
+            services.Configure<HttpClientOptions>(name, setupAction);
             return services;
         }
     }
