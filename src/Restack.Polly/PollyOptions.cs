@@ -1,6 +1,6 @@
 ﻿using Polly;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Restack.Polly
 {
     public class PollyOptions
     {
